@@ -1,1 +1,1 @@
-web: gunicorn manage:appCrud
+web: gunicorn projetoCrud.wsgi
