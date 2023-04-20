@@ -7,7 +7,8 @@
 
 - 📫 Você me acha através do e-mail **rcvdigo@gmail.com**
 
-<a href="https://crud-py-rcv.onrender.com">Projeto-Crud-Em-Python: <a href="https://github.com/rcvdigo/Projeto-Crud-Em-Python">Repositório GitHub</a></a>
+Veja a lista de projetos do meu repositório:<br/>
+<a href="https://crud-py-rcv.onrender.com">Projeto-Crud-Em-Python</a>
 
 <h3 align="left">Connect with me:</h3>
 <p align="left">
