@@ -21,7 +21,7 @@
                 {{form.as_p}}
             -->
             <!-- A outra forma é está: Se o id for igual ao id do usuário atualiza se não cria-->
-            <div id="result responsividade"></div>
+            <div id="result"></div>
             <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
                 <!-- Fazendo a proteção de dados do formulário -->
                 {% csrf_token %}
