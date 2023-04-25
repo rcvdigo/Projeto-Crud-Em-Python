@@ -1,1 +1,17 @@
-re
+main .responsividade{
+    padding: 20px;
+    min-width: 320px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.botoes-responsivos {
+   max-width: 120px;
+}
+
+.btn {
+    width: 90px;
+    margin: auto;
+    margin-left: 3px;
+    margin-bottom: 3px;
+}
