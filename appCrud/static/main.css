@@ -6,7 +6,7 @@ main {
     width: 100%;
 }
 
-/* 412px - 914px = celular*/
+/* 412px - 914px = Celular */
 @media (min-width: 412px) and (max-width: 914px) {
     body {
 	width:412px;
@@ -28,21 +28,21 @@ main {
     }
 }
 
-/* 800px - 1024px = telas menores, laptops*/
+/* 800px - 1024px = Telas menores, Laptops */
 @media (min-width: 800px) {
     main {
         width: 100%;
     }
 }
 
-/* 1024px - 1200px = desktop */
+/* 1024px - 1200px = Desktop */
 @media (min-width: 1024px) {
     main {
         width: 100%;
     }
 }
 
-/* 1200px e + = telas maiores, tvs */
+/* 1200px e + = Telas maiores, Tvs */
 @media (min-width: 1200px) {
     main {
         width: 100%;
