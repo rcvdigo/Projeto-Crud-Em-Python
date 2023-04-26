@@ -6,7 +6,7 @@ main {
     width: 100%;
 }
 
-/* 411px - 768px = celular*/
+/* 411px - 914px = celular*/
 @media (min-width: 411px) and (max-width: 914px) {
     .col-8{
 	max-width:100%;
