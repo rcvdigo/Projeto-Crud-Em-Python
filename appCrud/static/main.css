@@ -10,6 +10,7 @@ main {
 @media (min-width: 412px) and (max-width: 914px) {
     body {
 	width:412px;
+	margin:auto;    
     }
     main {
         width: 100%;
