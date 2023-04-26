@@ -6,17 +6,25 @@ main {
     width: 100%;
 }
 
-/* 411px - 914px = celular*/
-@media (min-width: 411px) and (max-width: 914px) {
-    .col-8{
-	max-width:100%;
-	padding:0px;
-    }	
+/* 412px - 914px = celular*/
+@media (min-width: 412px) and (max-width: 914px) {
     body {
-	width:411px;
+	width:412px;
     }
     main {
         width: 100%;
+    }
+    .col-8{
+	max-width:100%;
+	padding:0px;
+    }
+    .table td {
+	vertical-align: inherit;
+    }
+    .btn {
+	width:92px;
+	height:37px;
+	margin:3px 0px;
     }
 }
 
