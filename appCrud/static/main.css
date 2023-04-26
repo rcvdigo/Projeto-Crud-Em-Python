@@ -8,6 +8,9 @@ main {
 
 /* 411px - 768px = celular*/
 @media (min-width: 411px) {
+    body {
+	width:411px;
+    }
     main {
         width: 100%;
     }
