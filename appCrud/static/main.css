@@ -18,7 +18,7 @@ main {
 	max-width:100%;
 	padding:0px;
     }
-    .table td {
+    .table td, .table th {
 	vertical-align: inherit;
     }
     .btn {
