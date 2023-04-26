@@ -7,7 +7,7 @@ main {
 }
 
 /* 411px - 768px = celular*/
-@media (min-width: 411px) {
+@media (min-width: 411px), (max-width: 914px) {
     body {
 	width:411px;
     }
