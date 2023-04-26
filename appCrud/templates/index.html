@@ -10,7 +10,7 @@
 </head>
 <body>
     <main>
-        <div class="col-8 m-auto pt-2 pb-2 text-center responsividade">
+        <div class="col-8 m-auto pt-2 pb-2 text-center">
             <h1>Crud Com Python - Desenvolvedor: <a href="https://www.linkedin.com/in/rodrigo-camur%C3%A7a-vera-53a950215/" target="_blank">Rodrigo</a></h1>
         </div>
             <!--Para usar um comando if ex: 
@@ -19,10 +19,10 @@
             {% else %}
                 Não tem carro com esse nome!
             {% endif %}-->
-        <div class="col-8 m-auto pt-3 pb-2 text-center responsividade">
+        <div class="col-8 m-auto pt-3 pb-2 text-center">
             <a href="/form" class="btn btn-success">Adicionar</a>
         </div>
-        <div class="col-8 m-auto pt-3 pb-2 text-center responsividade">
+        <div class="col-8 m-auto pt-3 pb-2 text-center">
             <form method="get">
                 <input type="text" id="search" name="search" class="form-control" placeholder="Buscar...">
                 <input type="checkbox" id="modelo-search" name="modelo-search" value="modelo">
@@ -31,9 +31,9 @@
                 <label for="marca-search">Marca</label>
             </form>
         </div>
-        <div class="col-8 m-auto pt-4 pb-2 text-center responsividade">
-            <table class="table responsividade">
-                <thead class="thead-dark responsividade">
+        <div class="col-8 m-auto pt-4 pb-2 text-center">
+            <table class="table">
+                <thead class="thead-dark">
                 <tr>
                     <th scope="col">ID</th>
                     <th scope="col">Modelo</th>
@@ -49,7 +49,7 @@
                     <td>{{ dbs.modelo }}</td>
                     <td>{{ dbs.marca }}</td>
                     <td>{{ dbs.ano }}</td>
-                    <td class="botoes-responsivos">
+                    <td>
                         <a href="/view/{{dbs.id}}/" class="btn btn-dark">Visualizar</a>
                         <a href="/edit/{{dbs.id}}/" class="btn btn-primary">Editar</a>
                         <a href="/delete/{{dbs.id}}/" class="btn btn-danger btnDel">Deletar</a>
@@ -58,7 +58,7 @@
                 {% endfor %}
                 </tbody>
             </table>
-            <div class="pagination m-auto pt-4 pb-2 text-center responsividade">
+            <div class="pagination m-auto pt-4 pb-2 text-center">
                 <div class="m-auto pt-4 pb-2 text-center">
                     {% if db.has_previous %}
                         <a href="?page={{db.previous_page_number}}" class="btn btn-primary"><</a>
