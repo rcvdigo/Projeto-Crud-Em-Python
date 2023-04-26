@@ -8,6 +8,10 @@ main {
 
 /* 411px - 768px = celular*/
 @media (min-width: 411px), (max-width: 914px) {
+    .col-8{
+	max-width:100%;
+	padding:0px;
+    }	
     body {
 	width:411px;
     }
