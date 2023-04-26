@@ -6,11 +6,10 @@ main {
     width: 100%;
 }
 
-/* 480px - 768px = tablet*/
+/* 411px - 768px = celular*/
 @media (min-width: 411px) {
     main {
         width: 100%;
-        background-color: aqua;
     }
 }
 
@@ -18,7 +17,6 @@ main {
 @media (min-width: 800px) {
     main {
         width: 100%;
-        background-color: rgb(41, 138, 62);
     }
 }
 
@@ -26,7 +24,6 @@ main {
 @media (min-width: 1024px) {
     main {
         width: 100%;
-        background-color: rgb(120, 138, 41);
     }
 }
 
@@ -34,6 +31,5 @@ main {
 @media (min-width: 1200px) {
     main {
         width: 100%;
-        background-color: rgb(138, 93, 41);
     }
 }
