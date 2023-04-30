@@ -7,7 +7,7 @@ main {
 }
 
 /* 412px - 914px = Celular */
-@media (min-width: 412px) and (max-width: 914px) {
+@media (min-width: 52px) and (max-width: 914px) {
     body {
 	width:412px;
 	margin:auto;    
@@ -29,8 +29,8 @@ main {
     }
 }
 
-/* 800px - 1024px = Telas menores, Laptops */
-@media (min-width: 800px) {
+/* 914px - 1024px = Telas menores, Laptops */
+@media (min-width: 914px) {
     main {
         width: 100%;
     }
