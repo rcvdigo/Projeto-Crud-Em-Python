@@ -1,5 +1,7 @@
+<?php
 <html>
   <body>
-    Testando 123..
+    echo"Testando 123..";
   </body>
 </html>
+?>
