@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirec
 from appCrud.forms import CarrosForm
 from appCrud.models import Carros
 from django.core.paginator import Paginator
