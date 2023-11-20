@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'projetoCrud.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default':'postgres://rcvdigo_user:9rbgf74sgtR7qR3dXaBn2YLJzKVWNNpZ@dpg-cld37c7gsrdc73fidtl0-a.oregon-postgres.render.com/rcvdigo'
+    'default':dj_database_url.parse(os.environ.get("DATABASE_URL"))
         #'ENGINE': 'django.db.backends.sqlite3',
         #'NAME': BASE_DIR / 'db.sqlite3',
 }
