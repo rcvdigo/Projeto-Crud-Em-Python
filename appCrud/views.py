@@ -37,12 +37,10 @@ def create(request):
     form = CarrosForm(request.POST or None)
     re = request.POST
 
-    return JsonResponse(
-        {
+    return {
             'request': re,
             'form': form
-        }, status=201
-    )
+    }
     
     # if form.is_valid():
     #     form.save()
