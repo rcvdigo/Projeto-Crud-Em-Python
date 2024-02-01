@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.csrf import get_token
+from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from appCrud.forms import CarrosForm
 from appCrud.models import Carros
@@ -33,7 +33,7 @@ def form(request):
     data['form'] = CarrosForm()
     return render(request, 'form.html', data)
     
-# @csrf_exempt
+@csrf_exempt
 def create(request):
     form = CarrosForm(request.POST)
     form_type = type(form).__name__
