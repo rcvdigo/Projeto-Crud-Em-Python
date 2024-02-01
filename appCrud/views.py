@@ -45,7 +45,7 @@ def create(request):
 
         return JsonResponse(
             {
-                'postman': data = request.POST.dict(),
+                'postman': request.POST.dict(),
                 'form_html': request.POST
             }
         )
