@@ -1,7 +1,6 @@
 from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
-from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 from appCrud.forms import CarrosForm
 from appCrud.models import Carros
