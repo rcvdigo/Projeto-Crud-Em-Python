@@ -19,6 +19,9 @@
         function sendForm(event)
         {   
             event.preventDefault();
+            console.log("formulario");
+            console.log(form);
+            console.log("formulario");
             let data = new FormData(form);
             let ajax = new XMLHttpRequest();
             let token = doc.querySelectorAll('input')[0].value;
