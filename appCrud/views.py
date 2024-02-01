@@ -3,6 +3,8 @@ from appCrud.forms import CarrosForm
 from appCrud.models import Carros
 from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+
 
 # Create your views here.
 def home(request):
@@ -35,7 +37,23 @@ def create(request):
     form = CarrosForm(request.POST or None)
     if form.is_valid():
         form.save()
-    return redirect('home')
+
+        # Verifica se a requisição foi feita pelo Postman
+        user_agent = request.headers.get('User-Agent', '')
+        if 'Postman' in user_agent:
+            # Se a requisição foi feita pelo Postman, salva os dados no banco de dados
+            # Aqui você pode adicionar lógica para salvar os dados do formulário no banco de dados
+            # Substitua esta linha pela lógica real para salvar os dados no banco de dados
+
+            # Exemplo:
+            # novo_carro = form.save(commit=False)
+            # novo_carro.save()
+
+            return JsonResponse({'message': 'Dados salvos no banco de dados via Postman'}, status=201)
+        else:
+            return redirect('home')  # Redireciona para 'home' se a requisição não foi feita pelo Postman
+    else:
+        return JsonResponse({'error': 'Erro de validação'}, status=400)
 
 def view(request, pk):
     data = {}
