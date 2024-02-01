@@ -22,6 +22,7 @@
             let data = new FormData(form);
             let ajax = new XMLHttpRequest();
             let token = doc.querySelectorAll('input')[0].value;
+            console.log(token);
             ajax.open('POST', form.action);
             ajax.setRequestHeader('X-CSRF-TOKEN', token);
             ajax.onreadystatechange = function(){
@@ -34,7 +35,6 @@
                     
                 }
             }
-            console.log(form);
             ajax.send(data);
             form.load();
             form.reset();
