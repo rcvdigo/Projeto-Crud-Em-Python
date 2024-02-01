@@ -14,38 +14,38 @@
         }
     }
     //Ajax do form
-    if(doc.querySelector('#form')){
-        let form=doc.querySelector('#form');
-        function sendForm(event)
-        {   
-            event.preventDefault();
-            console.log("formulario");
-            console.log(form);
-            console.log("formulario");
-            let data = new FormData(form);
-            let ajax = new XMLHttpRequest();
-            let token = doc.querySelectorAll('input')[0].value;
-            console.log("toke");
-            console.log(token);
-            console.log("fim_toke");
-            ajax.open('POST', form.action);
-            ajax.setRequestHeader('X-CSRF-TOKEN', token);
-            ajax.onreadystatechange = function(){
-                if(ajax.status === 200 && ajax.readyState === 4){
-                    //console.log('Cadastrou!');
-                    let result = doc.querySelector('#result');
-                    result.innerHTML = 'Operação realizada com Sucesso!';
-                    result.classList.add('alert');
-                    result.classList.add('alert-success');
+    // if(doc.querySelector('#form')){
+    //     let form=doc.querySelector('#form');
+    //     function sendForm(event)
+    //     {   
+    //         event.preventDefault();
+    //         console.log("formulario");
+    //         console.log(form);
+    //         console.log("formulario");
+    //         let data = new FormData(form);
+    //         let ajax = new XMLHttpRequest();
+    //         let token = doc.querySelectorAll('input')[0].value;
+    //         console.log("toke");
+    //         console.log(token);
+    //         console.log("fim_toke");
+    //         ajax.open('POST', form.action);
+    //         ajax.setRequestHeader('X-CSRF-TOKEN', token);
+    //         ajax.onreadystatechange = function(){
+    //             if(ajax.status === 200 && ajax.readyState === 4){
+    //                 //console.log('Cadastrou!');
+    //                 let result = doc.querySelector('#result');
+    //                 result.innerHTML = 'Operação realizada com Sucesso!';
+    //                 result.classList.add('alert');
+    //                 result.classList.add('alert-success');
                     
-                }
-            }
-            ajax.send(data);
-            // form.load();
-            // form.reset();
-        }
-        form.addEventListener('submit', sendForm, false);
-    }
+    //             }
+    //         }
+    //         ajax.send(data);
+    //         // form.load();
+    //         // form.reset();
+    //     }
+    //     form.addEventListener('submit', sendForm, false);
+    // }
 
     if (doc.querySelector('#form')) {
         let form = doc.querySelector('#form');
