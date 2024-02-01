@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from appCrud.forms import CarrosForm
 from appCrud.models import Carros
 from django.core.paginator import Paginator
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 def home(request):
@@ -28,7 +29,8 @@ def form(request):
     data ={}
     data['form'] = CarrosForm()
     return render(request, 'form.html', data)
-
+    
+@csrf_exempt
 def create(request):
     form = CarrosForm(request.POST or None)
     if form.is_valid():
