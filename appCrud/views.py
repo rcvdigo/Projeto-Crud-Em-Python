@@ -41,8 +41,7 @@ def create(request):
 
     return JsonResponse(
         {
-            'request': re,
-            'form': form.cleaned_data if form.is_valid() else None
+            'request': form
         }
     )
 
