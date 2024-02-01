@@ -22,14 +22,22 @@
             -->
             <!-- A outra forma é está: Se o id for igual ao id do usuário atualiza se não cria-->
             <div id="result"></div>
-            <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
-                <!-- Fazendo a proteção de dados do formulário -->
-                {% csrf_token %}
-                <div class="form-group mt-4" id="id_modelo">Modelo: {{ form.modelo }}</div>
-                <div class="form-group mt-4 ml-2" id="id_marca">Marca: {{ form.marca }}</div>
-                <div class="form-group mt-4 ml-4" id="id_ano">Ano: {{ form.ano }}</div>
-                <input type="submit" class="btn btn-succes" value="Salvar">
-            </form>
+                <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
+                    {% csrf_token %}
+                    <div class="form-group mt-4">
+                        <label for="id_modelo">Modelo:</label>
+                        <input type="text" id="id_modelo" name="modelo" value="{{ form.modelo.value }}">
+                    </div>
+                    <div class="form-group mt-4 ml-2">
+                        <label for="id_marca">Marca:</label>
+                        <input type="text" id="id_marca" name="marca" value="{{ form.marca.value }}">
+                    </div>
+                    <div class="form-group mt-4 ml-4">
+                        <label for="id_ano">Ano:</label>
+                        <input type="text" id="id_ano" name="ano" value="{{ form.ano.value }}">
+                    </div>
+                    <input type="submit" class="btn btn-success" value="Salvar">
+                </form>
         </div>
         {% load static %}
         <script src="{% static 'main.js'%}"></script>
