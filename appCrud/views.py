@@ -35,14 +35,23 @@ def form(request):
 @csrf_exempt
 def create(request):
     if request.method == 'POST':
-        form = CarrosForm(request.POST)
-        form_type = type(form).__name__
+        if request.headers.get('content-type') == 'application/json':  # Verifica se a requisição é JSON
+            # Se a requisição é JSON, carrega os dados do corpo da requisição
+            data = request.POST.dict()
+            form = CarrosForm(data)
+        else:
+            # Se a requisição é via formulário HTML, usa request.POST diretamente
+            form = CarrosForm(request.POST)
+
         if form.is_valid():
             try:
                 car = form.save()
-                if request.is_ajax():
+                if request.is_ajax() or request.headers.get('content-type') == 'application/json':
+                    # Se a requisição veio via AJAX ou é JSON, retorna JSON com o ID do carro
                     return JsonResponse({'car_id': car.id}, status=201)
                 else:
+                    # Se a requisição veio via formulário HTML, redireciona para uma página de sucesso
+                    # Adapte o redirecionamento conforme necessário
                     return JsonResponse({'message': 'Carro criado com sucesso'}, status=201)
             except ValueError as e:
                 return JsonResponse({'error_message': str(e)}, status=400)
@@ -50,6 +59,29 @@ def create(request):
             return JsonResponse({'error_message': 'Formulário inválido'}, status=400)
     else:
         return JsonResponse({'error_message': 'Apenas solicitações POST são permitidas'}, status=405)
+
+
+
+
+
+
+# def create(request):
+#     if request.method == 'POST':
+#         form = CarrosForm(request.POST)
+#         form_type = type(form).__name__
+#         if form.is_valid():
+#             try:
+#                 car = form.save()
+#                 if request.is_ajax():
+#                     return JsonResponse({'car_id': car.id}, status=201)
+#                 else:
+#                     return JsonResponse({'message': 'Carro criado com sucesso'}, status=201)
+#             except ValueError as e:
+#                 return JsonResponse({'error_message': str(e)}, status=400)
+#         else:
+#             return JsonResponse({'error_message': 'Formulário inválido'}, status=400)
+#     else:
+#         return JsonResponse({'error_message': 'Apenas solicitações POST são permitidas'}, status=405)
 
 
 
