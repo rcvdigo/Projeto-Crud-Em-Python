@@ -39,11 +39,11 @@ def create(request):
     if form.is_valid():
         try:
             form.save()
-                return JsonResponse(
-                    {
-                        'request': request.POST
-                    }, status=201
-                )
+            return JsonResponse(
+                {
+                    'request': request.POST
+                }, status=201
+            )
         except ValueError as e:
             # Aqui você pode lidar com a exceção ValueError como achar adequado
             return JsonResponse({'error_message': str(e)}, status=400)
