@@ -36,17 +36,22 @@ def form(request):
 def create(request):
     form = CarrosForm(request.POST)
     form_type = type(form).__name__
-    if form.is_valid():
-        try:
-            form.save()
-            return JsonResponse(
-                {
-                    'request': request.POST
-                }, status=201
-            )
-        except ValueError as e:
-            # Aqui você pode lidar com a exceção ValueError como achar adequado
-            return JsonResponse({'error_message': str(e)}, status=400)
+    return JsonResponse(
+        {
+            'request': request.POST
+        }, status=201
+    )
+    # if form.is_valid():
+    #     try:
+    #         form.save()
+    #         return JsonResponse(
+    #             {
+    #                 'request': request.POST
+    #             }, status=201
+    #         )
+    #     except ValueError as e:
+    #         # Aqui você pode lidar com a exceção ValueError como achar adequado
+    #         return JsonResponse({'error_message': str(e)}, status=400)
             # redirect('home')
 
 def view(request, pk):
