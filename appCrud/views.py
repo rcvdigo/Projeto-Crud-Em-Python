@@ -36,11 +36,13 @@ def form(request):
 def create(request):
     form = CarrosForm(request.POST or None)
     re = request.POST
+    ah = request.form
 
     return JsonResponse(
         {
             'request': re,
-            'form': form
+            'form': form,
+            'for_2': ah
         }, status=201
     )
     
