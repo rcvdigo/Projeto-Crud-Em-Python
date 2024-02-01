@@ -41,11 +41,58 @@
                 }
             }
             ajax.send(data);
-            form.load();
-            form.reset();
+            // form.load();
+            // form.reset();
         }
         form.addEventListener('submit', sendForm, false);
     }
+
+    if (doc.querySelector('#form')) {
+        let form = doc.querySelector('#form');
+    
+        function sendForm(event) {
+            event.preventDefault();
+    
+            let formData = {
+                modelo: form.querySelector('#id_modelo').value,
+                marca: form.querySelector('#id_marca').value,
+                ano: form.querySelector('#id_ano').value
+            };
+
+            console.log(formData);
+            
+            fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': form.querySelector('input[name="csrfmiddlewaretoken"]').value
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error('Erro ao enviar os dados. Por favor, tente novamente.');
+                }
+            })
+            .then(data => {
+                let result = doc.querySelector('#result');
+                result.innerHTML = 'Operação realizada com Sucesso!';
+                result.classList.add('alert');
+                result.classList.add('alert-success');
+            })
+            .catch(error => {
+                console.error('Erro:', error);
+                alert(error.message);
+            });
+    
+            form.reset();
+        }
+    
+        form.addEventListener('submit', sendForm);
+    }
+
     //Filtro de busca
     let filtro = doc.querySelectorAll('input');
     // console.log(filtro[2].value);
