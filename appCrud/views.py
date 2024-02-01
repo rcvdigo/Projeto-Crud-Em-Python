@@ -37,7 +37,11 @@ def create(request):
     form = CarrosForm(request.POST)
     form_type = type(form).__name__
     # if form.is_valid():
-    form.save()
+    try:
+        form.save()
+    except ValueError as e:
+        # Aqui você pode lidar com a exceção ValueError como achar adequado
+        return JsonResponse({'error_message': str(e)}, status=400)
     # redirect('home')
 
     return JsonResponse(
