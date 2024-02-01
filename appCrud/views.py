@@ -34,13 +34,36 @@ def form(request):
     
 @csrf_exempt
 def create(request):
-    form = CarrosForm(request.POST)
-    form_type = type(form).__name__
-    return JsonResponse(
-        {
-            'request': request.POST
-        }, status=201
-    )
+    if request.method == 'POST':
+        form = CarrosForm(request.POST)
+        form_type = type(form).__name__
+        if form.is_valid():
+            try:
+                car = form.save()
+                if request.is_ajax():
+                    return JsonResponse({'car_id': car.id}, status=201)
+                else:
+                    return JsonResponse({'message': 'Carro criado com sucesso'}, status=201)
+            except ValueError as e:
+                return JsonResponse({'error_message': str(e)}, status=400)
+        else:
+            return JsonResponse({'error_message': 'Formulário inválido'}, status=400)
+    else:
+        return JsonResponse({'error_message': 'Apenas solicitações POST são permitidas'}, status=405)
+
+
+
+
+    
+    # form = CarrosForm(request.POST)
+    # form_type = type(form).__name__
+    # return JsonResponse(
+    #     {
+    #         'request': request.POST
+    #     }, status=201
+    # )
+
+
     # if form.is_valid():
     #     try:
     #         form.save()
