@@ -41,7 +41,7 @@ def create(request):
 
     return JsonResponse(
         {
-            'request': form
+            'request': request.POST
         }
     )
 
