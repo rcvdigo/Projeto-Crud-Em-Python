@@ -35,6 +35,7 @@ def form(request):
 @csrf_exempt
 def create(request):
     form = CarrosForm(request.POST or None)
+    re = request.POST
     if form.is_valid():
         form.save()
 
@@ -49,7 +50,12 @@ def create(request):
             # novo_carro = form.save(commit=False)
             # novo_carro.save()
 
-            return JsonResponse({'message': 'Dados salvos no banco de dados via Postman'}, status=201)
+            return JsonResponse(
+                {
+                    'message': 'Dados salvos no banco de dados via Postman',
+                    'request': re,
+                    'form': form
+                }, status=201)
         else:
             return redirect('home')  # Redireciona para 'home' se a requisição não foi feita pelo Postman
     else:
