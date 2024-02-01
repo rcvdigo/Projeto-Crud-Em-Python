@@ -36,52 +36,18 @@ def form(request):
 def create(request):
     form = CarrosForm(request.POST)
     form_type = type(form).__name__
-    # if form.is_valid():
-    try:
-        form.save()
-    except ValueError as e:
-        # Aqui você pode lidar com a exceção ValueError como achar adequado
-        return JsonResponse({'error_message': str(e)}, status=400)
-    # redirect('home')
-
-    return JsonResponse(
-        {
-            'request': request.POST,
-            'form_type': form_type
-        }
-    )
-
-# @csrf_exempt
-# def create(request):
-#     form = CarrosForm(request.POST or None)
-#     if form.is_valid():
-#         form.save()
-#     return redirect('home')
-
-    # if form.is_valid():
-    #     form.save()
-
-    #     # Verifica se a requisição foi feita pelo Postman
-    #     user_agent = request.headers.get('User-Agent', '')
-    #     if 'Postman' in user_agent:
-    #         # Se a requisição foi feita pelo Postman, salva os dados no banco de dados
-    #         # Aqui você pode adicionar lógica para salvar os dados do formulário no banco de dados
-    #         # Substitua esta linha pela lógica real para salvar os dados no banco de dados
-
-    #         # Exemplo:
-    #         # novo_carro = form.save(commit=False)
-    #         # novo_carro.save()
-
-    #         return JsonResponse(
-    #             {
-    #                 'message': 'Dados salvos no banco de dados via Postman',
-    #                 'request': re,
-    #                 'form': form
-    #             }, status=201)
-    #     else:
-    #         return redirect('home')  # Redireciona para 'home' se a requisição não foi feita pelo Postman
-    # else:
-    #     return JsonResponse({'error': 'Erro de validação'}, status=400)
+    if form.is_valid():
+        try:
+            form.save()
+                return JsonResponse(
+                    {
+                        'request': request.POST
+                    }, status=201
+                )
+        except ValueError as e:
+            # Aqui você pode lidar com a exceção ValueError como achar adequado
+            return JsonResponse({'error_message': str(e)}, status=400)
+            # redirect('home')
 
 def view(request, pk):
     data = {}
