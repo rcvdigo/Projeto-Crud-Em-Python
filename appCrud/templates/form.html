@@ -24,18 +24,18 @@
             <div id="result"></div>
                 <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
                     {% csrf_token %}
-                    <div class="form-group mt-4">
-                        <label for="id_modelo">Modelo:</label>
-                        <input type="text" id="id_modelo" name="modelo">{{ form.modelo }}
-                    </div>
-                    <div class="form-group mt-4 ml-2">
-                        <label for="id_marca">Marca:</label>
-                        <input type="text" id="id_marca" name="marca">{{ form.marca }}
-                    </div>
-                    <div class="form-group mt-4 ml-4">
-                        <label for="id_ano">Ano:</label>
-                        <input type="text" id="id_ano" name="ano">{{ form.ano }}
-                    </div>
+<!--                     <div class="form-group mt-4"> -->
+                    <label for="id_modelo">Modelo:</label>
+                    <input type="text" id="id_modelo" name="modelo">{{ form.modelo }}
+<!--                     </div> -->
+<!--                     <div class="form-group mt-4 ml-2"> -->
+                    <label for="id_marca">Marca:</label>
+                    <input type="text" id="id_marca" name="marca">{{ form.marca }}
+<!--                     </div> -->
+<!--                     <div class="form-group mt-4 ml-4"> -->
+                    <label for="id_ano">Ano:</label>
+                    <input type="text" id="id_ano" name="ano">{{ form.ano }}
+<!--                     </div> -->
                     <input type="submit" class="btn btn-success" value="Salvar">
                 </form>
         </div>
