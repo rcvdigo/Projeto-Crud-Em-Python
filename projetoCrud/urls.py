@@ -17,7 +17,6 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-from django.views.decorators.csrf import get_token
 from appCrud.views import home, form, create, view, edit, update, delete
 
 urlpatterns = [
@@ -29,7 +28,6 @@ urlpatterns = [
     path('edit/<int:pk>/', edit, name = 'edit'),
     path('update/<int:pk>/', update, name = 'update'),
     path('delete/<int:pk>/', delete, name = 'delete'),
-    path('csrf_token/', get_token, name='csrf_token'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
