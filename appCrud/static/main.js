@@ -34,7 +34,7 @@
                     
                 }
             }
-            console.log(data);
+            console.log(form);
             ajax.send(data);
             form.load();
             form.reset();
