@@ -25,9 +25,9 @@
             <form name="form" id="form" action="{% if db %}/update/{{db.id}}/{% else %}/create/{% endif %}" method="post">
                 <!-- Fazendo a proteção de dados do formulário -->
                 {% csrf_token %}
-                <div class="form-group mt-4" id="modelo">Modelo: {{ form.modelo }}</div>
-                <div class="form-group mt-4 ml-2" id="marca">Marca: {{ form.marca }}</div>
-                <div class="form-group mt-4 ml-4" id="ano">Ano: {{ form.ano }}</div>
+                <div class="form-group mt-4">Modelo: {{ form.modelo }}</div>
+                <div class="form-group mt-4 ml-2">Marca: {{ form.marca }}</div>
+                <div class="form-group mt-4 ml-4">Ano: {{ form.ano }}</div>
                 <input type="submit" class="btn btn-succes" value="Salvar">
             </form>
         </div>
