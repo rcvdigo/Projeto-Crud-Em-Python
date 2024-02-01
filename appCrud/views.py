@@ -36,30 +36,38 @@ def form(request):
 def create(request):
     form = CarrosForm(request.POST or None)
     re = request.POST
-    if form.is_valid():
-        form.save()
 
-        # Verifica se a requisição foi feita pelo Postman
-        user_agent = request.headers.get('User-Agent', '')
-        if 'Postman' in user_agent:
-            # Se a requisição foi feita pelo Postman, salva os dados no banco de dados
-            # Aqui você pode adicionar lógica para salvar os dados do formulário no banco de dados
-            # Substitua esta linha pela lógica real para salvar os dados no banco de dados
+    return JsonResponse(
+        {
+            'request': re,
+            'form': form
+        }, status=201
+    )
+    
+    # if form.is_valid():
+    #     form.save()
 
-            # Exemplo:
-            # novo_carro = form.save(commit=False)
-            # novo_carro.save()
+    #     # Verifica se a requisição foi feita pelo Postman
+    #     user_agent = request.headers.get('User-Agent', '')
+    #     if 'Postman' in user_agent:
+    #         # Se a requisição foi feita pelo Postman, salva os dados no banco de dados
+    #         # Aqui você pode adicionar lógica para salvar os dados do formulário no banco de dados
+    #         # Substitua esta linha pela lógica real para salvar os dados no banco de dados
 
-            return JsonResponse(
-                {
-                    'message': 'Dados salvos no banco de dados via Postman',
-                    'request': re,
-                    'form': form
-                }, status=201)
-        else:
-            return redirect('home')  # Redireciona para 'home' se a requisição não foi feita pelo Postman
-    else:
-        return JsonResponse({'error': 'Erro de validação'}, status=400)
+    #         # Exemplo:
+    #         # novo_carro = form.save(commit=False)
+    #         # novo_carro.save()
+
+    #         return JsonResponse(
+    #             {
+    #                 'message': 'Dados salvos no banco de dados via Postman',
+    #                 'request': re,
+    #                 'form': form
+    #             }, status=201)
+    #     else:
+    #         return redirect('home')  # Redireciona para 'home' se a requisição não foi feita pelo Postman
+    # else:
+    #     return JsonResponse({'error': 'Erro de validação'}, status=400)
 
 def view(request, pk):
     data = {}
