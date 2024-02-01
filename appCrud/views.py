@@ -35,13 +35,15 @@ def form(request):
 @csrf_exempt
 def create(request):
     form = CarrosForm(request.POST)
-    if form.is_valid():
-        form.save()
-        redirect('home')
+    form_type = type(form).__name__
+    # if form.is_valid():
+    form.save()
+    # redirect('home')
 
     return JsonResponse(
         {
-            'request': request.POST
+            'request': request.POST,
+            'form_type': form_type
         }
     )
 
