@@ -34,6 +34,7 @@
                     
                 }
             }
+            console.log(data);
             ajax.send(data);
             form.load();
             form.reset();
@@ -42,5 +43,5 @@
     }
     //Filtro de busca
     let filtro = doc.querySelectorAll('input');
-    console.log(filtro[2].value);
+    // console.log(filtro[2].value);
 })(window, document);
