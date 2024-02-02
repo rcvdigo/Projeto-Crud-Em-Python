@@ -2,9 +2,9 @@ from django.shortcuts import render, redirect
 from django.core.paginator import Paginator
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
-# from rest_framework.decorators import api_view
-# from rest_framework.response import Response
-# from rest_framework import status
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework import status
 from appCrud.forms import CarrosForm
 from appCrud.models import Carros
 
@@ -37,43 +37,48 @@ def form(request):
     return render(request, 'form.html', data)
 
 
-@csrf_exempt
-def create(request):
-    if request.method == 'POST':
-        form = CarrosForm(request.POST)
-        form_type = type(form).__name__
-        if form.is_valid():
-            try:
-                car = form.save()
-                if request.is_ajax():
-                    return JsonResponse({'car_id': car.id}, status=201)
-                else:
-                    return JsonResponse({'message': 'Carro criado com sucesso'}, status=201)
-            except ValueError as e:
-                return JsonResponse({'error_message': str(e)}, status=400)
-        else:
-            return JsonResponse({'error_message': 'Formulário inválido'}, status=400)
-    else:
-        return JsonResponse({'error_message': 'Apenas solicitações POST são permitidas'}, status=405)
-
-
-
-# @api_view(['POST'])
 # @csrf_exempt
 # def create(request):
 #     if request.method == 'POST':
-#         # Verifica se a requisição é JSON
-#         if 'application/json' in request.content_type:
-#             data = request.data
-#             form = CarrosForm(data)
-#         else:
-#             form = CarrosForm(request.POST)
-        
+#         form = CarrosForm(request.POST)
+#         form_type = type(form).__name__
 #         if form.is_valid():
-#             car = form.save()
-#             return Response({'message': 'Carro criado com sucesso'}, status=status.HTTP_201_CREATED)
+#             try:
+#                 car = form.save()
+#                 if request.is_ajax():
+#                     return JsonResponse({'car_id': car.id}, status=201)
+#                 else:
+#                     return JsonResponse({'message': 'Carro criado com sucesso'}, status=201)
+#             except ValueError as e:
+#                 return JsonResponse({'error_message': str(e)}, status=400)
 #         else:
-#             return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
+#             return JsonResponse({'error_message': 'Formulário inválido'}, status=400)
+#     else:
+#         return JsonResponse({'error_message': 'Apenas solicitações POST são permitidas'}, status=405)
+
+
+
+@api_view(['POST'])
+@csrf_exempt
+def create(request):
+    if request.method == 'POST':
+        # Verifica se a requisição é JSON
+        if 'application/json' in request.content_type:
+            data = request.data
+            form = CarrosForm(data)
+        else:
+            form = CarrosForm(request.POST)
+        
+        if form.is_valid():
+            car = form.save()
+            return Response(
+                {
+                    'message': 'Carro criado com sucesso',
+                    'post_man': data,
+                    'html': request.POST
+                }, status=status.HTTP_201_CREATED)
+        else:
+            return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 def view(request, pk):
