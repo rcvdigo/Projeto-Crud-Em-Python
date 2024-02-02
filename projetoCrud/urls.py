@@ -15,8 +15,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.urls import path, include
+from rest_framework.urls import urlpatterns as rest_framework_urls
 from appCrud.views import home, form, create, view, edit, update, delete
 
 urlpatterns = [
@@ -28,6 +29,7 @@ urlpatterns = [
     path('edit/<int:pk>/', edit, name = 'edit'),
     path('update/<int:pk>/', update, name = 'update'),
     path('delete/<int:pk>/', delete, name = 'delete'),
+    path('api-auth/', include(rest_framework_urls)),
 ]
 
 urlpatterns += staticfiles_urlpatterns()
