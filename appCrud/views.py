@@ -64,19 +64,28 @@ def create(request):
     if request.method == 'POST':
         # Verifica se a requisição é JSON
         if 'application/json' in request.content_type:
-            data = request.data
-            form = CarrosForm(data)
+            data_api = request.data
+            form = CarrosForm(data_api)
         else:
-            form = CarrosForm(request.POST)
+            data_html = request.POST
+            form = CarrosForm(data_html)
         
         if form.is_valid():
             car = form.save()
-            return Response(
-                {
-                    'message': 'Carro criado com sucesso',
-                    'post_man': data,
-                    'html': request.POST
-                }, status=status.HTTP_201_CREATED)
+            if data_api:
+                Response(
+                    {
+                        'message': 'Carro criado com sucesso',
+                        'post_man': data_api
+                    }, status=status.HTTP_201_CREATED
+                )
+            if data_html:
+                Response(
+                    {
+                        'message': 'Carro criado com sucesso',
+                        'html': data_html
+                    }, status=status.HTTP_201_CREATED
+                )
         else:
             return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
 
