@@ -23,18 +23,16 @@ from appCrud.views import home, form, create, view, edit, update, delete
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
-    path('form/', form, name='form'),
-    
+    path('form/', form, name='form'),    
+    path('view/<int:pk>/', view, name='view'),
+    path('edit/<int:pk>/', edit, name='edit'),
+    path('delete/<int:pk>/', delete, name='delete'),
+
     # Endpoint para criação de carros
     path('create/', create, name='create'),
     
-    path('view/<int:pk>/', view, name='view'),
-    path('edit/<int:pk>/', edit, name='edit'),
-
     # Endpoint para atualização de carros
     path('update/<int:pk>/', update, name='update'),
-    
-    path('delete/<int:pk>/', delete, name='delete'),
 
     # Incluir URLs do Django REST Framework sob o prefixo 'api/'
     path('api/', include(rest_framework_urls)),
