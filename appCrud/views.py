@@ -37,23 +37,23 @@ def form(request):
     return render(request, 'form.html', data)
 
 
+@api_view(['POST'])
 @csrf_exempt
 def create(request):
     if request.method == 'POST':
-        # if request.headers.get('content-type') == 'application/json':  # Verifica se a requisição é JSON
-        # Se a requisição é JSON, carrega os dados do corpo da requisição
-        data = request.POST.dict()
-        form = CarrosForm(data)
-        # else:
-        # Se a requisição é via formulário HTML, usa request.POST diretamente
-        form = CarrosForm(request.POST)
+        # Verifica se a requisição é JSON
+        if 'application/json' in request.content_type:
+            data = request.data
+            form = CarrosForm(data)
+        else:
+            form = CarrosForm(request.POST)
+        
+        if form.is_valid():
+            car = form.save()
+            return Response({'message': 'Carro criado com sucesso'}, status=status.HTTP_201_CREATED)
+        else:
+            return Response(form.errors, status=status.HTTP_400_BAD_REQUEST)
 
-        return JsonResponse(
-            {
-                'postman': request.POST.dict(),
-                'form_html': request.POST
-            }
-        )
 
 def view(request, pk):
     data = {}
