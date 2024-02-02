@@ -34,7 +34,7 @@
                     </div>
                     <div class="form-group mt-4 ml-4">
                         <label for="id_ano">Ano:</label>
-                        <input type="text" id="id_ano" name="ano" value="{% if form.instance.pk %}{{ form.instance.ano }}{% endif %}">
+                        <input type="number" id="id_ano" name="ano" value="{% if form.instance.pk %}{{ form.instance.ano }}{% endif %}">
                     </div>
                     <input type="submit" class="btn btn-success" value="Salvar">
                 </form>
