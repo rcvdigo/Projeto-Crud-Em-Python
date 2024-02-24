@@ -1,4 +1,2 @@
+__pycache__/
 venv/
-/appCrud/__pycache__/
-/appCrud/migrations/__pycache__/
-/projetoCrud/__pycache__/
